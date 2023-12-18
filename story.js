@@ -4,7 +4,6 @@ const esc = document.getElementById("buttonFlee");
 const fight = document.getElementById("buttonAttack");
 const regen = document.getElementById("buttonRegen");
 
-
 var step = 1;
 var secondaryStep = 0;
 var flow = "";
@@ -47,6 +46,10 @@ function action() {
 }
 
 function storyFlow() {
+    if (step === 0){
+        flow = "";
+    }
+
     if (step === 1) {
         flow = "We will now comence the game";
         esc.setAttribute("disabled", true);

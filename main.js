@@ -8,6 +8,9 @@ const enemyHealth = document.getElementById("enemyHealth");
 const enemyName = document.getElementById("enemyName");
 const enemyLevel = document.getElementById("enemyLevel");
 
+const menuOverlay = document.getElementById("menuOverlay");
+const overlay = document.getElementById("overlay");
+
 var maxLife = 15;
 var remainingLife = maxLife;
 
@@ -32,6 +35,28 @@ function saveName() {
     nameInputContainer.style.display = "none";
     next.removeAttribute("disabled");
     narrate();
+}
+
+function restart(){
+    step = 0;
+    maxLife = 10;
+    remainingLife = maxLife;
+    lifeLogic();
+    color = "var(--normal)";
+    storyFlow();
+    action();
+    nameInputContainer.style.display = "block";
+    resume();
+}
+
+function resume(){
+    menuOverlay.style.bottom = "-500px";
+    overlay.style.display = "none"
+}
+
+function menu() {
+    menuOverlay.style.bottom = "500px"
+    overlay.style.display = "block"
 }
 
 function gotHit() {

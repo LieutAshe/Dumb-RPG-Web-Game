@@ -130,6 +130,16 @@ h3 {
             width: 60px;
         }
     }
+
+    .menu{
+        position: absolute;
+        top: -50px;
+            & button {
+                margin: 20px;
+                font-size: 0.75rem;
+                width: 90px;            }
+    }
+
 }
 
 #enemyName,
@@ -150,4 +160,39 @@ h3 {
     & #playerNameInput {
         text-align: center;
     }
+}
+
+.overlay{
+    position: fixed;
+    display: none;
+    top: 0px;
+    left: 0px;
+    z-index: 9999;
+    background-color: rgba(5, 5, 5, 0.5);
+    height: 100dvh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuOverlay {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100px;
+    background-color: var(--bg2);
+    padding: 30px;
+    border-radius: 10px;
+
+        & button {
+            width: 100px;
+            height: 30px;
+            background-color: transparent;
+            color: var(--normal);
+            border: var(--normal) solid 2px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 5px;
+        }
 }
