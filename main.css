@@ -1,0 +1,153 @@
+:root {
+    --bg: #202020;
+    --bg2: #423c47;
+    --normal: #dcdcdc;
+    --normal2: #777;
+    --heart: red;
+    --blood: darkred;
+    --almost: pink;
+    --critical: darkgoldenrod;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--normal);
+    margin: 5%;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+}   
+
+.ui {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5%;
+    text-align: center;
+}
+
+.enemyUI {
+    position: absolute;
+    opacity: 0%;
+    left: 0;
+    right: 0;
+    top: 35%;
+    text-align: center;
+    transition: 2s;
+}
+
+h3 {
+    margin-bottom: -20px;
+}
+
+.lifeContainer {
+
+    & .heartCount {
+        display: flex;
+        width: fit-content;
+        margin: auto auto;
+    }
+
+    & .lifeBar {
+        width: 200px;
+        height: 25px;
+        border-radius: 20px;
+        border:  2px solid;
+        z-index: 10;
+    }
+
+    & .lifeFill {
+        position: absolute;
+        z-index: 0;
+        margin-top: 3px;
+        margin-left: 1px;
+        width: 200px;
+        height: 23px;
+        border-radius: 10px;
+        background-color: var(--blood);
+        transition: 1s;
+    }
+}
+
+#narrations {
+    opacity: 0%;
+    transition: 1s;
+}
+
+.actions {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background-color: var(--bg2);
+
+
+    & .accent {
+        position: absolute;
+        z-index: 99;
+        top: -15px;
+        background-color: var(--normal);
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        box-shadow: var(--critical) 0 0 0 5px;
+    }
+
+    & .accent:nth-child(2) {
+        position: absolute;
+        z-index: 98;
+        top: 0px;
+        background-color: var(--critical);
+        height: 5px;
+        width: 100%;
+        border-radius: 0%;
+        box-shadow: transparent 0 0 0 0;
+    }
+
+
+    & button {
+        outline: none;
+        cursor: pointer;
+        border-radius: 8px;
+        padding: 5px 20px;
+        border: none;
+        margin: 4px;
+        width: 100px;
+        max-height: 120px;
+        font-size: 1rem;
+        background-color: var(--normal);
+
+        &:disabled {
+            background-color: var(--normal2);
+            cursor: not-allowed;
+        }
+        & svg {
+            height: 60px;
+            width: 60px;
+        }
+    }
+}
+
+#enemyName,
+#playerName {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5rem;
+    margin-left: 0px;
+    transition: 0.1s;
+}
+
+#nameInput {
+    display: block;
+    position: absolute;
+    width: 90%;
+    top: 25%;
+    text-align: center;
+
+    & #playerNameInput {
+        text-align: center;
+    }
+}

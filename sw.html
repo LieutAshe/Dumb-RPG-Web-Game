@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> SW-RPG </title>
+        <link rel="stylesheet" href="main.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div class="ui">
+        <h3 id="playerName"> Player </h3>
+        <div class="lifeContainer">
+            <h4>Life Bar:</h4>
+            <div class="heartCount">
+                <div class="lifeBar"></div>
+                <div class="lifeFill" id="health">100%</div>
+            </div>
+        </div>
+        <div>
+            <p id="narrations"></p>
+        </div>
+    </div>
+        <div class="enemyUI" id="enemy">
+            <h3 id="enemyName">sad</h3>
+            <h4 id="enemyLevel">asd</h4>
+            <div class="lifeContainer">
+                <h4>Life Points:</h4>
+                <div class="heartCount">
+                    <div class="lifeBar"></div>
+                    <div class="lifeFill" id="enemyHealth">100%</div>
+                </div>
+            </div>
+        </div>
+        <div id="nameInput">
+            <label for="playerNameInput">Who's Playing?</label>
+            <br>
+            <input type="text" id="playerNameInput" oninput="updateOnScreenName()" placeholder="Player is Default">
+            <button onclick="saveName()">Save</button>
+        </div>
+
+        <div class="actions" id="actions">
+            <div class="accent"></div>
+            <div class="accent"></div>
+            <button id="buttonNext" onclick="narrate()">
+                <svg fill="#000000" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 70 70" enable-background="new 0 0 70 70" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M34.779,7c2.433,0,4.634,1.614,5.212,4.005l11.386,23.299h0.036l-0.019,0.066l0.019,0.066h-0.036L39.991,58.994 C39.413,61.385,37.211,63,34.777,63c-0.404,0-0.814-0.045-1.225-0.138c-2.882-0.654-4.671-3.441-3.998-6.23L40.332,34.37 L29.555,13.366c-0.673-2.787,1.116-5.576,3.998-6.229C33.963,7.044,34.375,7,34.779,7 M34.779,3c-0.708,0-1.419,0.079-2.11,0.236 c-2.476,0.561-4.565,2.042-5.888,4.171c-1.291,2.079-1.687,4.528-1.115,6.897c0.075,0.308,0.186,0.605,0.33,0.888l9.867,19.229 l-9.909,20.467c-0.124,0.258-0.221,0.527-0.288,0.805c-0.571,2.369-0.176,4.818,1.114,6.896c1.321,2.129,3.411,3.611,5.89,4.174 C33.361,66.92,34.07,67,34.777,67c4.199,0,7.832-2.705,8.985-6.631l11.036-23.803c0.437-0.694,0.647-1.502,0.609-2.313 c-0.013-0.711-0.219-1.411-0.594-2.025L43.75,9.585C42.581,5.684,38.962,3,34.779,3L34.779,3z"></path> </g> <g> <path d="M44.693,30.813l-5-10c-0.247-0.494-0.047-1.095,0.447-1.342c0.496-0.245,1.096-0.047,1.342,0.447l5,10 c0.247,0.494,0.047,1.095-0.447,1.342c-0.144,0.071-0.297,0.105-0.446,0.105C45.222,31.365,44.869,31.163,44.693,30.813z M37.693,16.813l-1-2c-0.247-0.494-0.047-1.095,0.447-1.342c0.494-0.246,1.096-0.047,1.342,0.447l1,2 c0.247,0.494,0.047,1.095-0.447,1.342c-0.144,0.071-0.297,0.105-0.446,0.105C38.222,17.365,37.869,17.163,37.693,16.813z"></path> </g> <g> <path d="M22.588,31.325c2.209,0,4,1.791,4,4s-1.791,4-4,4s-4-1.791-4-4S20.379,31.325,22.588,31.325 M22.588,27.325 c-4.411,0-8,3.589-8,8s3.589,8,8,8s8-3.589,8-8S26.999,27.325,22.588,27.325L22.588,27.325z"></path> </g> </g> </g></svg>
+                Next
+            </button>
+            <button id="buttonFlee" onclick="flee()">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M14.5 16.5H16.1152C16.9825 16.5 17.7946 16.0745 18.2883 15.3614L21.6315 10.5323C21.8588 10.204 21.889 9.77803 21.7105 9.42094C21.3678 8.73545 20.4444 8.60613 19.9265 9.17109L17.2727 12.0661C16.2059 13.23 14.5301 13.612 13.0643 13.0257L9.44043 11.5762C8.53873 11.2155 7.51727 11.3218 6.70922 11.8605L2.87237 14.4184C2.37401 14.7507 2.20104 15.402 2.4689 15.9377C2.76223 16.5244 3.47562 16.7622 4.06229 16.4689L7.24772 14.8762C7.86821 14.5659 8.54577 15.1811 8.29674 15.8286L6.50003 20.5M7.00003 4H4.00003M6.00003 7H4.00003M18 6.5C18 8.70914 16.2092 10.5 14 10.5C11.7909 10.5 10 8.70914 10 6.5C10 4.29086 11.7909 2.5 14 2.5C16.2092 2.5 18 4.29086 18 6.5Z" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4"></path></g></svg>
+                Flee
+            </button>
+            <button id="buttonAttack" onclick="Attack()">
+                <svg fill="#000000" viewBox="-2.5 -2.5 24 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin" class="jam jam-sword"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M6.778 10.728l1.414 1.414 8.436-8.435-.236-1.179-1.178-.236-8.436 8.436zM3.95 16.385a1 1 0 0 1-1.414 1.414L1.12 16.385a1 1 0 0 1 1.415-1.414l2.828-2.829-1.414-1.414a1 1 0 0 1 1.414-1.414L14.556.12l3.536.707.707 3.536-9.192 9.192a1 1 0 1 1-1.415 1.415l-1.414-1.415-2.828 2.829z"></path></g></svg>
+                Attack
+            </button>
+            <button id="buttonRegen" onclick="Regen()">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 7.30422V3M14 7.30408V3M16 10L16.0071 10.0071M8 3H16M8 13.5L8.62728 13.1236C8.74321 13.0541 8.8012 13.0193 8.8572 12.9881C9.90049 12.4067 11.149 12.322 12.2612 12.7571C12.3209 12.7804 12.3831 12.807 12.5074 12.8603C12.6008 12.9003 12.6475 12.9203 12.6932 12.9386C13.54 13.2771 14.4769 13.3161 15.3489 13.0491C15.396 13.0347 15.4442 13.0186 15.5406 12.9865L17 12.5L12 17.2L8 13.5ZM12 8.72604C10.4005 6.88754 7.7278 6.31936 5.72376 8.00287C3.71972 9.68639 3.43757 12.5011 5.01136 14.4922C6.31985 16.1477 10.2798 19.6392 11.5777 20.7693C11.7229 20.8957 11.7955 20.9589 11.8802 20.9837C11.9541 21.0054 12.035 21.0054 12.1089 20.9837C12.1936 20.9589 12.2662 20.8957 12.4114 20.7693C13.7092 19.6392 17.6692 16.1477 18.9777 14.4922C20.5515 12.5011 20.3038 9.66868 18.2653 8.00287C16.2268 6.33707 13.5995 6.88754 12 8.72604Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                Regen
+            </button>
+        </div>
+    <script src="/main.js"></script>
+    <script src="/actions.js"></script>    
+    <script src="/story.js"></script>
+    <script src="enemies.js"></script>   
+    </body>
+</html>
