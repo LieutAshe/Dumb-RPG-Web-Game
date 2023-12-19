@@ -9,6 +9,7 @@
     --critical: darkgoldenrod;
     --boss: magenta;
     --finalBoss: darkmagenta;
+    --exp: skyblue;
 }
 
 body {
@@ -24,7 +25,7 @@ body {
     position: absolute;
     left: 0;
     right: 0;
-    top: 5%;
+    top: 2%;
     text-align: center;
 }
 
@@ -76,6 +77,26 @@ h3 {
     transition: 1s;
 }
 
+.exp {
+    position: absolute;
+    z-index: 98;
+    top: 0px;
+    background-color: var(--normal);
+    height: 10px;
+    width: 100%;
+    box-shadow: transparent 0 0 0 0;
+
+        & .expBar {
+            z-index: 99;
+            background: linear-gradient(90deg, var(--critical) 0%, var(--exp) 100%) ;
+            height: 10px;
+            width: 100%;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            transition: 0.2s;
+        }
+}
+
 .actions {
     position: fixed;
     display: flex;
@@ -86,29 +107,6 @@ h3 {
     right: 0;
     padding: 20px;
     background-color: var(--bg2);
-
-
-    & .accent {
-        position: absolute;
-        z-index: 99;
-        top: -15px;
-        background-color: var(--normal);
-        height: 30px;
-        width: 30px;
-        border-radius: 50%;
-        box-shadow: var(--critical) 0 0 0 5px;
-    }
-
-    & .accent:nth-child(2) {
-        position: absolute;
-        z-index: 98;
-        top: 0px;
-        background-color: var(--critical);
-        height: 5px;
-        width: 100%;
-        border-radius: 0%;
-        box-shadow: transparent 0 0 0 0;
-    }
 
 
     & button {
@@ -151,6 +149,13 @@ h3 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.5rem;
     margin-left: 0px;
+    transition: 0.1s;
+}
+
+#playerLevel {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    margin-top: 24px;
     transition: 0.1s;
 }
 

@@ -1,4 +1,5 @@
 const health = document.getElementById("health");
+const exp = document.getElementById("expBar");
 const playerName = document.getElementById("playerName");
 const nameInputContainer = document.getElementById("nameInput");
 const playerNameInput = document.getElementById("playerNameInput");
@@ -14,6 +15,8 @@ const overlay2 = document.getElementById("overlay2");
 
 var maxLife = 15;
 var remainingLife = maxLife;
+var currentExp = 0;
+var requiredExp = 10;
 
 var Monster = String;
 var enemyMaxLife = 5;
@@ -28,8 +31,9 @@ var onScreen = {
 
 function updateOnScreenName() {
     onScreen.name = playerNameInput.value;
-    playerName.innerHTML = onScreen.name;
+    playerName.innerHTML = onScreen.name || "Player";
     console.log(playerNameInput.value);
+
 }
 
 function saveName() {
@@ -39,18 +43,21 @@ function saveName() {
 }
 
 function restart(){
+    //resetting values
+    step = 0;
+    flow = "";
+    maxLife = 15;
+    remainingLife = maxLife;
     overlay2.style.display = "none";
     document.documentElement.style.setProperty('--bg', '#202020');
     document.documentElement.style.setProperty('--bg2', '#423c47');
-    step = 0;
-    flow = "";
-    maxLife = 10;
-    remainingLife = maxLife;
-    lifeLogic();
-    color = "var(--normal)";
-    storyFlow();
-    action();
+    
     nameInputContainer.style.display = "block";
+    narrations.innerHTML = "";
+    enemy.style.opacity = "0%";
+
+    //functions
+    lifeLogic();
     resume();
 }
 
@@ -132,6 +139,33 @@ function lifeLogic() {
     }
 }
 
+function gainedExp() {
+    var expGot = Math.floor(Math.random()* (Monster.mLevel - playerLevel + 1)) + playerLevel;
+    currentExp = currentExp + expGot;
+    console.log(expGot)
+    expLogic();
+}
+
+function expLogic() {
+    var expPercent = currentExp/requiredExp;
+    var actualExpPercent = Math.round(expPercent*100);
+        exp.style.width = actualExpPercent + "%";
+
+    if (actualExpPercent >= 100) {
+        currentExp = 0;
+        requiredExp = requiredExp + playerLevel*3 - playerLevel*2;
+        playerLevel = playerLevel + 1;
+        expLogic();
+    }
+
+    if (playerLevel === 99){
+        currentExp = 0;
+        playerLevel = 99;
+    }
+    console.log(currentExp + "/" + requiredExp);
+    console.log(actualExpPercent);
+}
+
 function vsMode () {
     getValues();
     color = "var(--blood)";
@@ -181,6 +215,7 @@ function enemyLifeLogic () {
         enemyHealth.style.width = "0px";
         enemy.style.opacity = "0%";
         wonBattle = true;
+        gainedExp();
         storyFlow();
         narrate();
     }

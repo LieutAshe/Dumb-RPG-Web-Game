@@ -80,7 +80,7 @@ function Regen() {
 
 function Attack() {
     getValues();
-    var luck = Math.floor((Math.random()* 15) + 1);
+    var luck = Math.floor((Math.random()* playerLuck) + 1);
     var opponentLuck = Math.floor((Math.random()* Monster.mLuck) + 1);
     var difference = luck - opponentLuck;
     color = "var(--normal)";
@@ -96,9 +96,8 @@ function Attack() {
     
     if (luck > opponentLuck) {
         console.log("Success!");
-        actionResults = "Dealth damage to the Enemy."
         if (difference >= 2){
-            myDamage = 2;
+            myDamage = Math.floor((Math.random()* playerCrit) + 1);
             actionResults = "Critical Hit!!";
             color = "var(--critical)";
         }
@@ -106,6 +105,9 @@ function Attack() {
         else {
             myDamage = 1;
         }
+
+        actionResults = "Dealth damage to the Enemy. <br> -" + myDamage;
+        
         action();
         enemyGotHit();
     }

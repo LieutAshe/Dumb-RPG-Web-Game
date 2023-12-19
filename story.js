@@ -1,4 +1,5 @@
 var narrations = document.getElementById("narrations");
+var playerLvl = document.getElementById("playerLevel");
 const next = document.getElementById("buttonNext");
 const esc = document.getElementById("buttonFlee");
 const fight = document.getElementById("buttonAttack");
@@ -8,6 +9,9 @@ var step = 1;
 var secondaryStep = 0;
 var flow = "";
 var color = "var(--normal)";
+var playerLevel = 1;
+var playerLuck = 15;
+var playerCrit = 5;
 
 const deadPlayerName = document.getElementById("deadPlayerName");
 const defeatedBy = document.getElementById("defeatedBy");
@@ -24,6 +28,8 @@ function narrate() {
 
     narrations.style.opacity = "0%";
     setTimeout(function (){
+        playerLvl.innerHTML = "Level: " + playerLevel;
+        narrations.style.color = color;
         narrations.style.opacity = "100%";
         narrations.innerHTML = story;
         step = step + 1;
@@ -57,6 +63,7 @@ function died() {
 function storyFlow() {
     if (step === 0){
         flow = "";
+        playerLevel = 1;
     }
 
     if (step === 1) {
@@ -115,6 +122,20 @@ function storyFlow() {
         next.removeAttribute("disabled");
         fight.removeAttribute("disabled");
         esc.removeAttribute("disabled");
+    }
+
+    if (step === 8) {
+        flow = "Attributes has been reset to base values <br> Life: 10 pts <br> Luck: ^10 <br> Crit: 2 <br> Potions: 5"
+        maxLife = 10;
+        playerLuck = 10;
+        playerCrit = 2;
+    }
+
+    if (step === 9) {
+        flow = "An Enemy has Appeared";
+        Monster = goblin1;
+        vsMode();
+        inBattle = true;
     }
 
 }
