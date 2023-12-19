@@ -9,6 +9,9 @@ var secondaryStep = 0;
 var flow = "";
 var color = "var(--normal)";
 
+const deadPlayerName = document.getElementById("deadPlayerName");
+const defeatedBy = document.getElementById("defeatedBy");
+
 next.setAttribute("disabled", true);
 esc.setAttribute("disabled", true);
 fight.setAttribute("disabled", true);
@@ -43,6 +46,12 @@ function action() {
         narrations.style.opacity = "100%";
         narrations.innerHTML = actionResults;
     },500);
+}
+
+function died() {
+    overlay2.style.display = "flex";
+    deadPlayerName.innerHTML = "Player: " + onScreen.name;
+    defeatedBy.innerHTML = "Defeated by a: " + Monster.mName;
 }
 
 function storyFlow() {

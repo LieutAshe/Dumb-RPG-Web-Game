@@ -10,6 +10,7 @@ const enemyLevel = document.getElementById("enemyLevel");
 
 const menuOverlay = document.getElementById("menuOverlay");
 const overlay = document.getElementById("overlay");
+const overlay2 = document.getElementById("overlay2");
 
 var maxLife = 15;
 var remainingLife = maxLife;
@@ -38,7 +39,11 @@ function saveName() {
 }
 
 function restart(){
+    overlay2.style.display = "none";
+    document.documentElement.style.setProperty('--bg', '#202020');
+    document.documentElement.style.setProperty('--bg2', '#423c47');
     step = 0;
+    flow = "";
     maxLife = 10;
     remainingLife = maxLife;
     lifeLogic();
@@ -56,7 +61,7 @@ function resume(){
 
 function menu() {
     menuOverlay.style.bottom = "500px"
-    overlay.style.display = "block"
+    overlay.style.display = "flex"
 }
 
 function gotHit() {
@@ -115,14 +120,22 @@ function lifeLogic() {
         health.style.width = "calc(200px*" + lifePercent + ")";
         health.innerHTML = actualLifePercent + "%";
 
+    if (actualLifePercent <= 20) {
+        document.documentElement.style.setProperty('--bg', '#3b0605');
+        document.documentElement.style.setProperty('--bg2', '#590a07');
+    }
+
     if (remainingLife <= 0) {
         health.style.width = "0px";
+        health.innerHTML = "0%";
+        died();
     }
 }
 
 function vsMode () {
     getValues();
     color = "var(--blood)";
+    enemyName.style.color = "var(--" + Monster.mType + ")";
     actionResults = "You have encountered an enemy";
     action();
     enemyRemainingLife = enemyMaxLife;

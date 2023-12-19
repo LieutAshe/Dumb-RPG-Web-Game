@@ -69,11 +69,23 @@
                 </button>
             </div>
         </div>
-        <div class="overlay" id="overlay">
+        <div class="overlay" id="overlay" onclick="resume()">
             <div class="menuOverlay" id="menuOverlay">
                 <button onclick="resume()">Resume</button>
                 <button onclick="restart()">Restart</button>
             </div>        
+        </div>
+        <div class="overlay2" id="overlay2">
+            <div class="deadMessage">
+                <h2>You Died</h2>
+                <div>
+                    <h5 id="deadPlayerName"></h5>
+                    <h5>Score: </h5>
+                    <h5>Level: </h5>
+                    <h5 id="defeatedBy"></h5>
+                </div>
+                <button onclick="restart()">Restart</button>
+            </div>
         </div>
     <script src="/main.js"></script>
     <script src="/actions.js"></script>    
