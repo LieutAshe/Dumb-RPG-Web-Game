@@ -18,7 +18,11 @@
 
 ###
 
-<p align="left">A text-based game that runs mostly on luck and wit. Run or die, is the game dumb or you are just unlucky (or maybe dumb)?<br><br>- Calculation logic is that if your luck (determined by a die) is larger (or equal on some cases) you will deal damage to your enemy with a chance to trigger **CRITICAL**.<br>- Regular Enemies may be lower or equal to your die range (die sides number)<br>-  While bosses will be much higher than your die range<br>- You can upgrade and use buffs to increase your chances to win in a boss fight<br>- Flee, Heal and others also are luck based.</p>
+<p align="left">A text-based game that runs mostly on luck and wit. Run or die, is the game dumb or you are just unlucky (or maybe dumb)?<br><br>- Calculation logic is that if your luck (determined by a die) is larger (or equal on some cases) you will deal damage to your enemy with a chance to trigger **CRITICAL**.<br>- Regular Enemies may be lower or equal to your die range (die sides number)<br>-  While bosses will be much higher than your die range<br>- You can upgrade and use buffs to increase your chances to win in a boss fight<br>- Flee, Heal and others also are luck based.
+<br>- 
+<br>- Picking this project after I started this 2 years ago and leaving it to dust.
+
+</p>
 
 ###
 
